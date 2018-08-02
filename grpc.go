@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-var streaming = flag.Bool("g", false, "use a streaming grpc RPC")
+var streaming = flag.Bool("g", true, "use a streaming grpc RPC")
 
 type pinger struct {
 	payload []byte
@@ -54,6 +54,8 @@ func doGrpcServer(port string) {
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
+
+	panic("yes")
 }
 
 func grpcWorker(c PingerClient) {
